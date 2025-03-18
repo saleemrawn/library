@@ -20,7 +20,7 @@ function addBooksToDOM() {
   myLibrary.forEach((book) => {
     libraryContainer.insertAdjacentHTML(
       "beforeend",
-      `<div class=".card">
+      `<div class=".card" data-book-id="${book.id}">
         <p class="book-title">${book.title}</p>
         <p class="book-author">${book.author}</p>
         <p class="book-pages">${book.pages}</p>
