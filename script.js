@@ -45,3 +45,36 @@ function resetForm() {
   const addBookForm = document.querySelector(".add-book-form");
   addBookForm?.reset();
 }
+
+function attachEventListeners() {
+  const addBookBtn = document.querySelector(".add-book-btn");
+  const addBookForm = document.querySelector(".add-book-form");
+  const cancelBtn = document.querySelector(".cancel-btn");
+
+  addBookBtn.addEventListener("click", () => {
+    showModal();
+  });
+
+  addBookForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(addBookForm);
+    addBookToLibrary(
+      formData.get("title"),
+      formData.get("author"),
+      formData.get("pages"),
+      formData.get("hasRead") === "no" ? false : true
+    );
+
+    addBooksToDOM();
+    resetForm();
+    closeModal();
+  });
+
+  cancelBtn.addEventListener("click", () => {
+    resetForm();
+    closeModal();
+  });
+}
+
+attachEventListeners();
