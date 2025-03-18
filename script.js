@@ -30,3 +30,8 @@ function addBooksToDOM() {
     );
   });
 }
+
+function showModal() {
+  const addBookDialog = document.querySelector(".add-book-dialog");
+  addBookDialog.showModal();
+}
