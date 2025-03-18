@@ -31,6 +31,15 @@ function addBooksToDOM() {
       </div>`
     );
   });
+
+  updateReadStatus();
+}
+
+function updateReadStatus() {
+  const statusBtn = document.querySelectorAll(".status-btn");
+  statusBtn.forEach((button) => {
+    if (button.getAttribute("data-read-status") === "true") button.classList.add("read");
+  });
 }
 
 function showModal() {
