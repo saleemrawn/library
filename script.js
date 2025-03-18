@@ -35,3 +35,8 @@ function showModal() {
   const addBookDialog = document.querySelector(".add-book-dialog");
   addBookDialog.showModal();
 }
+
+function closeModal() {
+  const addBookDialog = document.querySelector(".add-book-dialog");
+  addBookDialog.close();
+}
