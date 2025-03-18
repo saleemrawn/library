@@ -8,6 +8,7 @@ function Book(title, author, pages, hasRead) {
   this.hasRead = hasRead;
 }
 
-function addBookToLibrary() {
-  // take params, create a book then store it in the array
+function addBookToLibrary(title = "", author = "", pages = 0, hasRead = false) {
+  const book = new Book(title, author, pages, hasRead);
+  myLibrary.push(book);
 }
