@@ -40,3 +40,8 @@ function closeModal() {
   const addBookDialog = document.querySelector(".add-book-dialog");
   addBookDialog.close();
 }
+
+function resetForm() {
+  const addBookForm = document.querySelector(".add-book-form");
+  addBookForm?.reset();
+}
