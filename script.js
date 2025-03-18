@@ -88,4 +88,6 @@ function attachEventListeners() {
   });
 }
 
-attachEventListeners();
+window.addEventListener("DOMContentLoaded", () => {
+  attachEventListeners();
+});
