@@ -34,6 +34,7 @@ function addBooksToDOM() {
 
   updateReadStatus();
   attachRemoveBookEventListener();
+  attachReadStatusEventListener();
 }
 
 function attachRemoveBookEventListener() {
@@ -54,6 +55,43 @@ function attachRemoveBookEventListener() {
       });
     });
   });
+}
+
+function attachReadStatusEventListener() {
+  const statusBtns = document.querySelectorAll(".status-btn");
+
+  statusBtns.forEach((button) => {
+    button.addEventListener("click", (event) => {
+      const parent = event.target.parentElement;
+      const bookID = parent.getAttribute("data-book-id");
+
+      myLibrary.forEach((book) => {
+        if (book.id === bookID && book.hasRead === false) {
+          book.hasRead = true;
+          updateButtonToRead(event.target);
+          return;
+        }
+
+        if (book.id === bookID && book.hasRead === true) {
+          book.hasRead = false;
+          updateButtonToNotRead(event.target);
+          return;
+        }
+      });
+    });
+  });
+}
+
+function updateButtonToRead(button) {
+  button.classList.add("read");
+  button.setAttribute("data-read-status", "true");
+  button.innerHTML = "Read";
+}
+
+function updateButtonToNotRead(button) {
+  button.classList.remove("read");
+  button.setAttribute("data-read-status", "false");
+  button.innerHTML = "Not Read";
 }
 
 function updateReadStatus() {
