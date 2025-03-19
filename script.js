@@ -25,7 +25,7 @@ function addBooksToDOM() {
         <p class="book-author">${book.author}</p>
         <p class="book-pages">${book.pages}</p>
         <button class="status-btn" data-read-status="${book.hasRead}">${
-        book.hasRead === false ? "Not Read" : "Read"
+        book.hasRead === false ? "Mark as Read" : "Read"
       }</button>
         <button class="remove-btn">Remove</button>
       </div>`
@@ -91,7 +91,7 @@ function updateButtonToRead(button) {
 function updateButtonToNotRead(button) {
   button.classList.remove("read");
   button.setAttribute("data-read-status", "false");
-  button.innerHTML = "Not Read";
+  button.innerHTML = "Mark as Read";
 }
 
 function updateReadStatus() {
