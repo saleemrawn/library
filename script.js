@@ -33,6 +33,27 @@ function addBooksToDOM() {
   });
 
   updateReadStatus();
+  attachRemoveBookEventListener();
+}
+
+function attachRemoveBookEventListener() {
+  const removeBtns = document.querySelectorAll(".remove-btn");
+
+  removeBtns.forEach((button) => {
+    button.addEventListener("click", (event) => {
+      const parent = event.target.parentElement;
+      const bookID = parent.getAttribute("data-book-id");
+
+      myLibrary.forEach((book) => {
+        if (book.id === bookID) {
+          const index = myLibrary.indexOf(book);
+
+          myLibrary.splice(index, 1);
+          parent.remove();
+        }
+      });
+    });
+  });
 }
 
 function updateReadStatus() {
