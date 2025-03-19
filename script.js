@@ -20,7 +20,7 @@ function addBooksToDOM() {
   myLibrary.forEach((book) => {
     libraryContainer.insertAdjacentHTML(
       "beforeend",
-      `<div class=".card" data-book-id="${book.id}">
+      `<div class="card" data-book-id="${book.id}">
         <p class="book-title">${book.title}</p>
         <p class="book-author">${book.author}</p>
         <p class="book-pages">${book.pages}</p>
@@ -149,4 +149,10 @@ function attachEventListeners() {
 
 window.addEventListener("DOMContentLoaded", () => {
   attachEventListeners();
+  addBookToLibrary("Onyx Storm", "Rebecca Yarros", 527, true);
+  addBookToLibrary("The Crash", "Freida McFadden", 384, false);
+  addBookToLibrary("In Cold Blood", "Truman Capote", 343, true);
+  addBookToLibrary("Gone Girl", "Gillian Flynn", 415, false);
+  addBookToLibrary("Shutter Island", "Dennis Lehane", 369, true);
+  addBooksToDOM();
 });
