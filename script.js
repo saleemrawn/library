@@ -23,7 +23,7 @@ function addBooksToDOM() {
       `<div class="card" data-book-id="${book.id}">
         <p class="book-title">${book.title}</p>
         <p class="book-author">${book.author}</p>
-        <p class="book-pages">${book.pages}</p>
+        <p class="book-pages">${book.pages} pages</p>
         <button class="status-btn" data-read-status="${book.hasRead}">${
         book.hasRead === false ? "Mark as Read" : "Read"
       }</button>
