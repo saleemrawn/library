@@ -154,15 +154,4 @@ function attachEventListeners() {
 
 window.addEventListener("DOMContentLoaded", () => {
   attachEventListeners();
-  addBookToLibrary("Onyx Storm", "Rebecca Yarros", 527, true);
-  addBookToLibrary("The Crash", "Freida McFadden", 384, false);
-  addBookToLibrary("In Cold Blood", "Truman Capote", 343, true);
-  addBookToLibrary("Gone Girl", "Gillian Flynn", 415, false);
-  addBookToLibrary("Shutter Island", "Dennis Lehane", 369, true);
-  addBookToLibrary("Onyx Storm", "Rebecca Yarros", 527, true);
-  addBookToLibrary("The Crash", "Freida McFadden", 384, false);
-  addBookToLibrary("In Cold Blood", "Truman Capote", 343, true);
-  addBookToLibrary("Gone Girl", "Gillian Flynn", 415, false);
-  addBookToLibrary("Shutter Island", "Dennis Lehane", 369, true);
-  addBooksToDOM();
 });
