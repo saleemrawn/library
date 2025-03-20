@@ -45,7 +45,7 @@ function attachRemoveBookEventListener() {
 
   removeBtns.forEach((button) => {
     button.addEventListener("click", (event) => {
-      const parent = event.target.parentElement;
+      const parent = event.target.parentElement.parentElement;
       const bookID = parent.getAttribute("data-book-id");
 
       myLibrary.forEach((book) => {
@@ -65,7 +65,7 @@ function attachReadStatusEventListener() {
 
   statusBtns.forEach((button) => {
     button.addEventListener("click", (event) => {
-      const parent = event.target.parentElement;
+      const parent = event.target.parentElement.parentElement;
       const bookID = parent.getAttribute("data-book-id");
 
       myLibrary.forEach((book) => {
