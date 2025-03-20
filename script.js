@@ -88,7 +88,7 @@ function attachReadStatusEventListener() {
 function updateButtonToRead(button) {
   button.classList.add("read");
   button.setAttribute("data-read-status", "true");
-  button.innerHTML = "Read";
+  button.innerHTML = "&#x2714; Read";
 }
 
 function updateButtonToNotRead(button) {
