@@ -54,12 +54,13 @@
           <div class="form-pages-container">
             <label for="pages">No. of pages</label>
             <input
-              type="text"
+              type="number"
               name="pages"
               id="pages"
               class="form-pages"
-              pattern="[0-9]{1,2000}"
-              title="Numbers only"
+              placeholder="0"
+              min="0"
+              max="2000"
               required
             />
           </div>
