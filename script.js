@@ -48,14 +48,16 @@ function attachRemoveBookEventListener() {
       const parent = event.target.parentElement.parentElement;
       const bookID = parent.getAttribute("data-book-id");
 
-      myLibrary.forEach((book) => {
-        if (book.id === bookID) {
-          const index = myLibrary.indexOf(book);
+      if (window.confirm("Are you sure you want to delete this book?")) {
+        myLibrary.forEach((book) => {
+          if (book.id === bookID) {
+            const index = myLibrary.indexOf(book);
 
-          myLibrary.splice(index, 1);
-          parent.remove();
-        }
-      });
+            myLibrary.splice(index, 1);
+            parent.remove();
+          }
+        });
+      }
     });
   });
 }
