@@ -21,13 +21,16 @@ function addBooksToDOM() {
     libraryContainer.insertAdjacentHTML(
       "beforeend",
       `<div class="card" data-book-id="${book.id}">
-        <p class="book-title">${book.title}</p>
-        <p class="book-author">${book.author}</p>
-        <p class="book-pages">${book.pages} pages</p>
-        <button class="status-btn" data-read-status="${book.hasRead}">${
-        book.hasRead === false ? "Mark as Read" : "Read"
-      }</button>
-        <button class="remove-btn">Remove</button>
+          <div class="card-info">
+            <p class="book-title">${book.title}</p>
+            <p class="book-author">${book.author}</p>
+            <p class="book-pages">${book.pages} pages</p>
+          </div>
+          <div class="card-buttons">
+            <button class="status-btn primary-btn" data-read-status="${book.hasRead}">${
+        book.hasRead === false ? "Mark as Read" : "&#x2714; Read"
+      }</button><button class="remove-btn warning-btn">&#x2718; Remove</button>
+          </div>
       </div>`
     );
   });
@@ -149,6 +152,11 @@ function attachEventListeners() {
 
 window.addEventListener("DOMContentLoaded", () => {
   attachEventListeners();
+  addBookToLibrary("Onyx Storm", "Rebecca Yarros", 527, true);
+  addBookToLibrary("The Crash", "Freida McFadden", 384, false);
+  addBookToLibrary("In Cold Blood", "Truman Capote", 343, true);
+  addBookToLibrary("Gone Girl", "Gillian Flynn", 415, false);
+  addBookToLibrary("Shutter Island", "Dennis Lehane", 369, true);
   addBookToLibrary("Onyx Storm", "Rebecca Yarros", 527, true);
   addBookToLibrary("The Crash", "Freida McFadden", 384, false);
   addBookToLibrary("In Cold Blood", "Truman Capote", 343, true);
