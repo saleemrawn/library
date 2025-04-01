@@ -1,11 +1,47 @@
 const myLibrary = [];
 
-function Book(title, author, pages, hasRead) {
-  this.id = crypto.randomUUID();
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.hasRead = hasRead;
+class Book {
+  #id;
+  #title;
+  #author;
+  #pages;
+  #hasRead;
+
+  constructor(title, author, pages, hasRead) {
+    this.#id = crypto.randomUUID();
+    this.#title = title;
+    this.#author = author;
+    this.#pages = pages;
+    this.#hasRead = hasRead;
+  }
+
+  get id() {
+    return this.#id;
+  }
+
+  get title() {
+    return this.#title;
+  }
+
+  get author() {
+    return this.#author;
+  }
+
+  get pages() {
+    return this.#pages;
+  }
+
+  get hasRead() {
+    return this.#hasRead;
+  }
+
+  set hasRead(status) {
+    if (typeof status !== "boolean") {
+      throw new Error(`Invalid argument: expected boolean, received ${status}`);
+    }
+
+    return (this.#hasRead = status);
+  }
 }
 
 function addBookToLibrary(title = "", author = "", pages = 0, hasRead = false) {
