@@ -155,6 +155,10 @@ function closeModal() {
 function resetForm() {
   const addBookForm = document.querySelector(".add-book-form");
   addBookForm?.reset();
+  resetTitleError();
+  resetAuthorError();
+  resetPagesError();
+  resetReadError();
 }
 
 function attachEventListeners() {
@@ -215,15 +219,10 @@ const author = document.getElementById("author");
 const pages = document.getElementById("pages");
 const noRead = document.getElementById("noRead");
 const yesRead = document.getElementById("yesRead");
-const titleError = document.querySelector("#title + span.error");
-const authorError = document.querySelector("#author + span.error");
-const pagesError = document.querySelector("#pages + span.error");
-const readError = document.querySelector("label[for=yesRead] + span.error");
 
 title.addEventListener("input", () => {
   if (title.validity.valid) {
-    titleError.textContent = "";
-    titleError.className = "error";
+    resetTitleError();
     return;
   }
 
@@ -232,8 +231,7 @@ title.addEventListener("input", () => {
 
 author.addEventListener("input", () => {
   if (author.validity.valid) {
-    authorError.textContent = "";
-    authorError.className = "error";
+    resetAuthorError();
     return;
   }
 
@@ -242,8 +240,7 @@ author.addEventListener("input", () => {
 
 pages.addEventListener("input", () => {
   if (pages.validity.valid) {
-    pagesError.textContent = "";
-    pagesError.className = "error";
+    resetPagesError();
     return;
   }
 
@@ -252,8 +249,7 @@ pages.addEventListener("input", () => {
 
 noRead.addEventListener("input", () => {
   if (noRead.validity.valid) {
-    readError.textContent = "";
-    readError.className = "error";
+    resetReadError();
     return;
   }
 
@@ -262,8 +258,7 @@ noRead.addEventListener("input", () => {
 
 yesRead.addEventListener("input", () => {
   if (yesRead.validity.valid) {
-    readError.textContent = "";
-    readError.className = "error";
+    resetReadError();
     return;
   }
 
@@ -271,6 +266,8 @@ yesRead.addEventListener("input", () => {
 });
 
 function showTitleError() {
+  const titleError = document.querySelector("#title + span.error");
+
   if (title.validity.valueMissing) {
     titleError.textContent = "Title is required";
     titleError.className = "error active";
@@ -291,6 +288,8 @@ function showTitleError() {
 }
 
 function showAuthorError() {
+  const authorError = document.querySelector("#author + span.error");
+
   if (author.validity.valueMissing) {
     authorError.textContent = "Author is required";
     authorError.className = "error active";
@@ -311,6 +310,8 @@ function showAuthorError() {
 }
 
 function showPagesError() {
+  const pagesError = document.querySelector("#pages + span.error");
+
   if (pages.validity.badInput) {
     pagesError.textContent = "Pages should contain a valid number";
     pagesError.className = "error active";
@@ -331,9 +332,35 @@ function showPagesError() {
 }
 
 function showReadError() {
+  const readError = document.querySelector("label[for=yesRead] + span.error");
+
   if (noRead.validity.valueMissing && yesRead.validity.valueMissing) {
     readError.textContent = "Select an option";
     readError.className = "error active";
     return;
   }
+}
+
+function resetTitleError() {
+  const titleError = document.querySelector("#title + span.error");
+  titleError.textContent = "";
+  titleError.className = "error";
+}
+
+function resetAuthorError() {
+  const authorError = document.querySelector("#author + span.error");
+  authorError.textContent = "";
+  authorError.className = "error";
+}
+
+function resetPagesError() {
+  const pagesError = document.querySelector("#pages + span.error");
+  pagesError.textContent = "";
+  pagesError.className = "error";
+}
+
+function resetReadError() {
+  const readError = document.querySelector("label[for=yesRead] + span.error");
+  readError.textContent = "";
+  readError.className = "error";
 }
