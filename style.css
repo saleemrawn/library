@@ -281,3 +281,23 @@ legend {
   grid-template-rows: 1fr;
   gap: 1rem;
 }
+
+input:user-invalid {
+  border-color: var(--red);
+  background-color: #fdd;
+}
+
+.error {
+  width: 100%;
+  padding: 0;
+  color: var(--white);
+  font-size: 0.875rem;
+  background-color: var(--red);
+  border-radius: var(--border-radius-100);
+  margin-top: 0.25rem;
+  display: block;
+}
+
+.error.active {
+  padding: 0.25rem 0.5rem;
+}
