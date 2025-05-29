@@ -165,6 +165,11 @@ function attachEventListeners() {
   const addBookBtn = document.querySelector(".add-book-btn");
   const addBookForm = document.querySelector(".add-book-form");
   const cancelBtn = document.querySelector(".cancel-btn");
+  const title = document.getElementById("title");
+  const author = document.getElementById("author");
+  const pages = document.getElementById("pages");
+  const noRead = document.getElementById("noRead");
+  const yesRead = document.getElementById("yesRead");
 
   addBookBtn.addEventListener("click", () => {
     showModal();
@@ -204,65 +209,55 @@ function attachEventListeners() {
     resetForm();
     closeModal();
   });
+
+  title.addEventListener("input", () => {
+    if (title.validity.valid) {
+      resetTitleError();
+      return;
+    }
+
+    showTitleError();
+  });
+
+  author.addEventListener("input", () => {
+    if (author.validity.valid) {
+      resetAuthorError();
+      return;
+    }
+
+    showAuthorError();
+  });
+
+  pages.addEventListener("input", () => {
+    if (pages.validity.valid) {
+      resetPagesError();
+      return;
+    }
+
+    showPagesError();
+  });
+
+  noRead.addEventListener("input", () => {
+    if (noRead.validity.valid) {
+      resetReadError();
+      return;
+    }
+
+    showReadError();
+  });
+
+  yesRead.addEventListener("input", () => {
+    if (yesRead.validity.valid) {
+      resetReadError();
+      return;
+    }
+
+    showError();
+  });
 }
 
 window.addEventListener("DOMContentLoaded", () => {
   attachEventListeners();
-});
-
-/**
- * FORM VALIDATION
- */
-
-const title = document.getElementById("title");
-const author = document.getElementById("author");
-const pages = document.getElementById("pages");
-const noRead = document.getElementById("noRead");
-const yesRead = document.getElementById("yesRead");
-
-title.addEventListener("input", () => {
-  if (title.validity.valid) {
-    resetTitleError();
-    return;
-  }
-
-  showTitleError();
-});
-
-author.addEventListener("input", () => {
-  if (author.validity.valid) {
-    resetAuthorError();
-    return;
-  }
-
-  showAuthorError();
-});
-
-pages.addEventListener("input", () => {
-  if (pages.validity.valid) {
-    resetPagesError();
-    return;
-  }
-
-  showPagesError();
-});
-
-noRead.addEventListener("input", () => {
-  if (noRead.validity.valid) {
-    resetReadError();
-    return;
-  }
-
-  showReadError();
-});
-
-yesRead.addEventListener("input", () => {
-  if (yesRead.validity.valid) {
-    resetReadError();
-    return;
-  }
-
-  showError();
 });
 
 function showTitleError() {
