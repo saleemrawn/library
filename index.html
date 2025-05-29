@@ -24,7 +24,7 @@
     </header>
     <main>
       <dialog class="add-book-dialog">
-        <form class="add-book-form">
+        <form class="add-book-form" novalidate>
           <h2>Add Book</h2>
           <div class="form-title-container">
             <label for="title">Title</label>
@@ -33,14 +33,27 @@
               name="title"
               id="title"
               class="form-title"
-              pattern="[A-Za-z0-9'!$£%&+=?\s\-]{3,100}"
+              minlength="3"
+              maxlength="30000"
+              pattern="[A-Za-z0-9'!$£%&+=? \-]{3,30000}"
               required
             />
+            <span class="error" aria-live="polite"></span>
           </div>
 
           <div class="form-author-container">
             <label for="author">Author</label>
-            <input type="text" name="author" id="author" class="form-author" pattern="[A-Za-z.\s\-]{2,100}" required />
+            <input
+              type="text"
+              name="author"
+              id="author"
+              class="form-author"
+              minlength="3"
+              maxlength="800"
+              pattern="[A-Za-z' \-]{3,800}"
+              required
+            />
+            <span class="error" aria-live="polite"></span>
           </div>
 
           <div class="form-pages-container">
@@ -51,10 +64,11 @@
               id="pages"
               class="form-pages"
               placeholder="0"
-              min="0"
+              min="1"
               max="2000"
               required
             />
+            <span class="error" aria-live="polite"></span>
           </div>
 
           <fieldset class="form-read-status-container">
@@ -63,6 +77,7 @@
             <label for="noRead">No</label>
             <input type="radio" name="hasRead" id="yesRead" class="form-hasRead" value="yes" />
             <label for="yesRead">Yes</label>
+            <span class="error" aria-live="polite"></span>
           </fieldset>
 
           <div class="form-buttons-container">
