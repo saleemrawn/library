@@ -169,6 +169,20 @@ function attachEventListeners() {
   addBookForm.addEventListener("submit", (e) => {
     e.preventDefault();
 
+    if (
+      !title.validity.valid ||
+      !author.validity.valid ||
+      !pages.validity.valid ||
+      !noRead.validity.valid ||
+      !yesRead.validity.valid
+    ) {
+      showTitleError();
+      showAuthorError();
+      showPagesError();
+      showReadError();
+      return;
+    }
+
     const formData = new FormData(addBookForm);
     addBookToLibrary(
       formData.get("title"),
@@ -191,3 +205,135 @@ function attachEventListeners() {
 window.addEventListener("DOMContentLoaded", () => {
   attachEventListeners();
 });
+
+/**
+ * FORM VALIDATION
+ */
+
+const title = document.getElementById("title");
+const author = document.getElementById("author");
+const pages = document.getElementById("pages");
+const noRead = document.getElementById("noRead");
+const yesRead = document.getElementById("yesRead");
+const titleError = document.querySelector("#title + span.error");
+const authorError = document.querySelector("#author + span.error");
+const pagesError = document.querySelector("#pages + span.error");
+const readError = document.querySelector("label[for=yesRead] + span.error");
+
+title.addEventListener("input", () => {
+  if (title.validity.valid) {
+    titleError.textContent = "";
+    titleError.className = "error";
+    return;
+  }
+
+  showTitleError();
+});
+
+author.addEventListener("input", () => {
+  if (author.validity.valid) {
+    authorError.textContent = "";
+    authorError.className = "error";
+    return;
+  }
+
+  showAuthorError();
+});
+
+pages.addEventListener("input", () => {
+  if (pages.validity.valid) {
+    pagesError.textContent = "";
+    pagesError.className = "error";
+    return;
+  }
+
+  showPagesError();
+});
+
+noRead.addEventListener("input", () => {
+  if (noRead.validity.valid) {
+    readError.textContent = "";
+    readError.className = "error";
+    return;
+  }
+
+  showReadError();
+});
+
+yesRead.addEventListener("input", () => {
+  if (yesRead.validity.valid) {
+    readError.textContent = "";
+    readError.className = "error";
+    return;
+  }
+
+  showError();
+});
+
+function showTitleError() {
+  if (title.validity.valueMissing) {
+    titleError.textContent = "Title is required";
+    titleError.className = "error active";
+    return;
+  }
+
+  if (title.validity.tooShort || title.validity.tooLong) {
+    titleError.textContent = `Enter a title between ${title.minLength} & ${title.maxLength} characters`;
+    titleError.className = "error active";
+    return;
+  }
+
+  if (title.validity.patternMismatch) {
+    titleError.textContent = "Letters, numbers & symbols (!$£%&+=) only";
+    titleError.className = "error active";
+    return;
+  }
+}
+
+function showAuthorError() {
+  if (author.validity.valueMissing) {
+    authorError.textContent = "Author is required";
+    authorError.className = "error active";
+    return;
+  }
+
+  if (author.validity.tooShort || author.validity.tooLong) {
+    authorError.textContent = `Enter a name between ${author.minLength} & ${author.maxLength} characters`;
+    authorError.className = "error active";
+    return;
+  }
+
+  if (author.validity.patternMismatch) {
+    authorError.textContent = "Letters, hyphen (-) & apostrophes (') only";
+    authorError.className = "error active";
+    return;
+  }
+}
+
+function showPagesError() {
+  if (pages.validity.badInput) {
+    pagesError.textContent = "Pages should contain a valid number";
+    pagesError.className = "error active";
+    return;
+  }
+
+  if (pages.validity.valueMissing) {
+    pagesError.textContent = "Pages is required";
+    pagesError.className = "error active";
+    return;
+  }
+
+  if (pages.validity.rangeUnderflow || pages.validity.rangeOverflow) {
+    pagesError.textContent = `Enter a number between ${pages.min} and ${pages.max}`;
+    pagesError.className = "error active";
+    return;
+  }
+}
+
+function showReadError() {
+  if (noRead.validity.valueMissing && yesRead.validity.valueMissing) {
+    readError.textContent = "Select an option";
+    readError.className = "error active";
+    return;
+  }
+}
